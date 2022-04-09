@@ -42,6 +42,7 @@ class Request
         if ($body !== null) {
             $body = http_build_query($body);
             $headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            $headers['User-Agent'] = $_SERVER['HTTP_USER_AGENT'];
             $body = Utils::streamFor($body);
         }
         $request = new Psr7Request($method, $uri, $headers, $body);
